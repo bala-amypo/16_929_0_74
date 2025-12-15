@@ -15,15 +15,16 @@ import com.example.demo.service.LocationService;
 public class LocationController {
 
     @Autowired
-    LocationService locationService;
+        LocationService locationService;
 
-    @GetMapping("/locations")
-    public List<Location> getAllLocation(){
-        return locationService.getAllLocations();
-    }
+            @GetMapping("/locations")
+                public List<Location> getAllLocation(){
+                        return locationService.getAllLocations();
+                            }
 
-    @PostMapping("/locations")
-    public Location createLocation(@RequestBody Location loc){
-        return locationService.createLocation(loc);
-    }
-}
+                                @PostMapping("/locations")
+                                    public Location createLocation(@RequestBody Location loc){
+                                            return locationService.createLocation(loc);
+                                                }
+                                                }
+                                                
