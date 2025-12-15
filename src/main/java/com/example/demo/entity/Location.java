@@ -4,8 +4,11 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Location {
- 
- private Long id;
- S
+    
+    
+    private Long id;
+    private String name;
+    private Double latitude;
+    private Double longitude;
 
 }
