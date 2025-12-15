@@ -12,7 +12,7 @@ public class LocationServiceImpl implements LocationService{
 
     @Override
     public Location createLocation(Location location) {
-      
+       
     }
 
     @Override
