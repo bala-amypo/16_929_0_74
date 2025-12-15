@@ -12,10 +12,12 @@ import com.example.demo.service.LocationService;
 @RestController
 public class LocationController {
 
-    @Autowired
+    
     LocationService locationService;
     
-    
+
+    Loc
+
 
     @GetMapping("/locations")
     public List<Location> getAllLocation(){
