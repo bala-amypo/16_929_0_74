@@ -6,7 +6,6 @@ import java.util.*;
 
 interface studentService {
 
-
      List<studentEntity> getAll();
 
      studentEntity addStudent(studentEntity student);
