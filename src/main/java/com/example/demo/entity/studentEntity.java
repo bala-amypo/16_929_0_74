@@ -21,6 +21,7 @@ public class studentEntity {
     public Long getId(){
         return id;
     }
+    
     public studentEntity(){
 
     }
