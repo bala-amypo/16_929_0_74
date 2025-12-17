@@ -4,7 +4,7 @@ import com.example.demo.entity.*;
 import java.util.*;
 
 
-interface studentService {
+interface StudentService {
 
      List<studentEntity> getAll();
 
