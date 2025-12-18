@@ -25,7 +25,7 @@ public class User {
         return objcreatedAt;
     }
     public void setObjcreatedAt(LocalDateTime objcreatedAt) {
-        this.objcreatedAt = objcreatedAt;
+        this.objcreatedAt = LocalDateTime.now();
     }
     public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime objcreatedAt) {
         this.id = id;
