@@ -34,9 +34,10 @@ public class studentServiceImpl implements StudentService{
         return repo.save(newstu);
     }
 
-    public  void deleteByID(Long id){
+    public  String deleteByID(Long id){
         studentEntity data = getbyId(id);
         repo.deleteById(id);
+         return "Deleted Successfully !";
     }
 
 }

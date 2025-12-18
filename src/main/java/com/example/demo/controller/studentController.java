@@ -31,14 +31,13 @@ public class studentController {
         return service.getbyId(id);
     }
 
-`   @PutMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public studentEntity updateById(@PathVariable Long id, @Valid @RequestBody studentEntity newstu){
         return service.updateById(id,newstu);
     }
 
     @DeleteMapping("/delete/{id}")
     public String deleteByID(@PathVariable Long id){
-        service.deleteByID(id);
-        return "Deleted Successfully !";
+       return service.deleteByID(id);
     }
 }
