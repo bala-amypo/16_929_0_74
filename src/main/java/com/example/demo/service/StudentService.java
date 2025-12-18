@@ -10,4 +10,5 @@ public interface StudentService {
 
      studentEntity addStudent(studentEntity student);
 
+      studentEntity getbyId(Long id);
 }
