@@ -35,8 +35,9 @@ public class User {
         this.name = name;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.objcreatedAt = objcreatedAt;
+        this.objcreatedAt = LocalDateTime.now();
     }
+    
     @PrePersist
     public void onCreate(){
          createdAt = LocalDateTime.now();
@@ -62,14 +63,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-     
-    public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public LocalDateTime getCreatedAt() {
