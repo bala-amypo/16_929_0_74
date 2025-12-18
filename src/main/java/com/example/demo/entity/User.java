@@ -44,20 +44,10 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
-    public LocalDate getCurrtime() {
-        return currtime;
-    }
-
-    public void setCurrtime(LocalDate currtime) {
-        this.currtime = currtime;
-    }
-
-    public User(Long id, String name, LocalDate currtime) {
-        this.id = id;
-        this.name = name;
-        this.currtime = currtime;
-    }
+   
+    
+ 
+  
 
     public User() {
     }   
