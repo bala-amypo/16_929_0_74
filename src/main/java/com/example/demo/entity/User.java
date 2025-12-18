@@ -7,51 +7,52 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
-import java.time.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
+    // Set by JPA lifecycle
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    // Used to compare object vs persistence lifecycle
     private LocalDateTime objcreatedAt;
-   
- 
-     public LocalDateTime getObjcreatedAt() {
-        return objcreatedAt;
+
+    // Mandatory no-args constructor (used by Hibernate)
+    public User() {
     }
-    public void setObjcreatedAt(LocalDateTime objcreatedAt) {
-        this.objcreatedAt = LocalDateTime.now();
-    }
-    public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime objcreatedAt) {
-        this.id = id;
+
+    // Optional parameterized constructor (used manually, not by JPA)
+    public User(String name) {
         this.name = name;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.objcreatedAt = LocalDateTime.now();
+        this.objcreatedAt = LocalDateTime.now(); // object creation time
     }
-    
+
+    // Runs ONLY before INSERT
     @PrePersist
-    public void onCreate(){
-         createdAt = LocalDateTime.now();
+    public void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.createdAt = now;
+        this.objcreatedAt = now; // ensures not null after persist
     }
 
-
+    // Runs ONLY before UPDATE
     @PreUpdate
-    public void onUpdate(){
-        updatedAt = LocalDateTime.now();
+    public void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
     }
+
+    // -------- Getters & Setters --------
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -66,19 +67,15 @@ public class User {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public LocalDateTime getObjcreatedAt() {
+        return objcreatedAt;
     }
 
-    public User() {
-    
-    }   
+    public void setObjcreatedAt(LocalDateTime objcreatedAt) {
+        this.objcreatedAt = objcreatedAt;
+    }
 }
