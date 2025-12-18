@@ -1,9 +1,8 @@
 package com.example.demo.entity;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import java.time.*;
@@ -12,18 +11,50 @@ import java.time.*;
 public class User {
     
     @Id
-    @GeneratedValue = (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-`   private LocalDate currtime;
+   private LocalDate currtime;
 
     @PrePersist
     public void setCurrTime(){
         currtime = LocalDate.now();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getCurrtime() {
+        return currtime;
+    }
+
+    public void setCurrtime(LocalDate currtime) {
+        this.currtime = currtime;
+    }
+
+    public User(Long id, String name, LocalDate currtime) {
+        this.id = id;
+        this.name = name;
+        this.currtime = currtime;
+    }
+
     public User() {
     }
+
+    
     
 
     
