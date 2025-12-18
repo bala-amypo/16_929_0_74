@@ -20,10 +20,7 @@ public class User {
     private LocalDateTime updatedAt;
     private LocalDateTime objcreatedAt;
    
-    @PrePersist
-    public void Create(){
-         objcreatedAt = LocalDateTime.now();
-    }
+ 
      public LocalDateTime getObjcreatedAt() {
         return objcreatedAt;
     }
