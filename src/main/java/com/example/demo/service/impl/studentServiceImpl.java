@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.entity.*;
 import com.example.demo.repository.*;
@@ -31,6 +32,11 @@ public class studentServiceImpl implements StudentService{
         studentEntity existing = getbyId(id); 
         newstu.setId(existing.getId()); // newstu.setId(id);
         return repo.save(newstu);
+    }
+
+    public  void deleteByID(Long id){
+        studentEntity data = getbyId(id);
+        repo.deleteById(id);
     }
 
 }
