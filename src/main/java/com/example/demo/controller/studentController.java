@@ -31,11 +31,13 @@ public class studentController {
         return service.getbyId(id);
     }
 
-
 `   @PutMapping("/update/{id}")
     public studentEntity updateById(@PathVariable Long id, @Valid @RequestBody studentEntity newstu){
         return service.updateById(id,newstu);
     }
 
-    
+    @DeleteMapping("/delete/{id}")
+    public studentEntity deleteByID(@PathVariable Lond id){
+        return service.deleteByID(id);
+    }
 }
