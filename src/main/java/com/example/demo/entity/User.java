@@ -1,11 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -18,7 +13,7 @@ public class User {
     private String name;
     private LocalDateTime objCreatedAt;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+ 
 
   
     public User() {
@@ -35,10 +30,7 @@ public class User {
         this.createdAt = LocalDateTime.now();
     }
 
-    @PreUpdate
-    public void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
-    }
+
 
     public Long getId() {
         return id;
@@ -52,10 +44,7 @@ public class User {
         return createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
+  
     public String getName() {
         return name;
     }
