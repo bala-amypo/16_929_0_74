@@ -57,7 +57,7 @@ public class User {
         return id;
     }
 
-    public String getObjCreatedAt() {
+    public LocalDateTime getObjCreatedAt() {
         return objCreatedAt;
     }
 
