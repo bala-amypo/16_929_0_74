@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-   private LocalDate currtime;
+    private LocalDate currtime;
 
     @PrePersist
     public void setCurrTime(){
@@ -52,10 +52,5 @@ public class User {
     }
 
     public User() {
-    }
-
-    
-    
-
-    
+    }   
 }
