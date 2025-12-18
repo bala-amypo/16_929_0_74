@@ -18,49 +18,47 @@ public class User {
 
     private String name;
 
-    // Set by JPA lifecycle
+    // Object lifecycle timestamp (Java object creation)
+    private LocalDateTime objCreatedAt;
+
+    // Persistence lifecycle timestamp (DB insert)
     private LocalDateTime createdAt;
+
+    // DB update timestamp
     private LocalDateTime updatedAt;
 
-    // Used to compare object vs persistence lifecycle
-    private LocalDateTime objcreatedAt;
-
-    // Mandatory no-args constructor (used by Hibernate)
+    // 🔹 No-args constructor (MANDATORY for JPA)
     public User() {
+        // Object creation time
+        this.objCreatedAt = LocalDateTime.now();
     }
 
-    // Optional parameterized constructor (used manually, not by JPA)
+    // Optional constructor for clarity
     public User(String name) {
         this.name = name;
-        this.objcreatedAt = LocalDateTime.now(); // object creation time
+        this.objCreatedAt = LocalDateTime.now();
     }
 
-    // Runs ONLY before INSERT
+    // 🔹 Runs only when entity is persisted
     @PrePersist
     public void onCreate() {
-        LocalDateTime now = LocalDateTime.now();
-        this.createdAt = now;
-        this.objcreatedAt = now; // ensures not null after persist
+        this.createdAt = LocalDateTime.now();
     }
 
-    // Runs ONLY before UPDATE
+    // 🔹 Runs only when entity is updated
     @PreUpdate
     public void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
 
-    // -------- Getters & Setters --------
+    // ---------- Getters & Setters ----------
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getObjCreatedAt() {
+        return objCreatedAt;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -71,11 +69,11 @@ public class User {
         return updatedAt;
     }
 
-    public LocalDateTime getObjcreatedAt() {
-        return objcreatedAt;
+    public String getName() {
+        return name;
     }
 
-    public void setObjcreatedAt(LocalDateTime objcreatedAt) {
-        this.objcreatedAt = objcreatedAt;
+    public void setName(String name) {
+        this.name = name;
     }
 }
