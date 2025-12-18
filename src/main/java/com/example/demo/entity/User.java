@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+
 import java.time.*;
 
 @Entity
@@ -14,11 +16,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private LocalDate currtime;
+    private LocalTime createdAt;
+    private LocalTime updatedAt;
 
     @PrePersist
-    public void setCurrTime(){
-        currtime = LocalDate.now();
+    public void onCreate(){
+         createdAt = now();
+    }
+
+    @PreUpdate
+    public void onUpdate(){
+        updatedAt = now();
     }
 
     public Long getId() {
