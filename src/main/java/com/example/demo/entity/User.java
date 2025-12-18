@@ -26,7 +26,7 @@ public class User {
 
     @PreUpdate
     public void onUpdate(){
-        updatedAt = now();
+        updatedAt = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -44,11 +44,34 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-   
+    
     
  
   
 
-    public User() {
+   public LocalTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+public User(Long id, String name, LocalTime createdAt, LocalTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+     public User() {
     }   
 }
