@@ -30,5 +30,12 @@ public class studentController {
     public studentEntity getbyId(@PathVariable Long id){
         return service.getbyId(id);
     }
+
+
+`   @PutMapping("/update/{id}")
+    public studentEntity updateById(@PathVariable Long id, @Valid @RequestBody studentEntity newstu){
+        return service.updateById(id,newstu);
+    }
+
     
 }
