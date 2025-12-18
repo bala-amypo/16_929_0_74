@@ -18,11 +18,30 @@ public class User {
     private String name;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
+    private LocalDateTime objcreatedAt;
+   
+    @PrePersist
+    public void Create(){
+         objcreatedAt = LocalDateTime.now();
+    }
+     public LocalDateTime getObjcreatedAt() {
+        return objcreatedAt;
+    }
+    public void setObjcreatedAt(LocalDateTime objcreatedAt) {
+        this.objcreatedAt = objcreatedAt;
+    }
+    public User(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime objcreatedAt) {
+        this.id = id;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.objcreatedAt = objcreatedAt;
+    }
     @PrePersist
     public void onCreate(){
          createdAt = LocalDateTime.now();
     }
+
 
     @PreUpdate
     public void onUpdate(){
